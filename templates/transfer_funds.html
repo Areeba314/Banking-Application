@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Transfer Funds{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/transfer-funds.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="screen-container">
+        <div class="content-box">
+            <div class="funds-header">
+                <!-- Back Button -->
+                <button class="back-button" onclick="window.history.back();">
+                    <span class="arrow-icon">&larr;</span>
+                </button>
+                <h1 class="center-heading">Transfer Funds</h1>
+            </div>
+          
+            <div class="beneficiary-details">
+            <!-- Beneficiary Details -->
+            <p><strong>Beneficiary's Name:</strong> {{ beneficiary.account_holder_name }}</p>
+            <p><strong>Bank:</strong> {{ beneficiary.bank_name }}</p>
+            <p><strong>Account Number:</strong> {{ beneficiary.account_number }}</p>
+            </div>
+            <!-- Transfer Form -->
+            <form method="POST" action="{{ url_for('transfer_money', beneficiary_id=beneficiary.id) }}" id="transfer-form">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount" required min="1" max="25000" step="0.01">
+                <div id="amount-error" class="error"></div>
+            
+                <label for="remarks">Remarks:</label>
+                <input type="text" id="remarks" name="remarks" placeholder="Optional">
+            
+                <button type="submit">Send Money</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const amountInput = document.getElementById('amount');
+        const amountError = document.getElementById('amount-error');
+        const form = document.getElementById('transfer-form');
+
+        // Event listener to validate amount
+        amountInput.addEventListener('input', () => {
+            const value = parseFloat(amountInput.value);
+
+            // Check if value is valid and within the range
+            if (isNaN(value) || value <= 0) {
+                amountError.textContent = "Amount must be a positive number.";
+            } else if (value > 25000) {
+                amountError.textContent = "Amount must be less than or equal to 25,000.";
+                amountInput.setCustomValidity("Amount exceeds the limit."); // Set custom validity for form submission
+            } else {
+                amountError.textContent = "";
+                amountInput.setCustomValidity(""); // Clear custom validity
+            }
+        });
+
+        // Prevent form submission if there is an error
+        form.addEventListener('submit', (e) => {
+            const value = parseFloat(amountInput.value);
+            if (isNaN(value) || value <= 0 || value > 25000) {
+                e.preventDefault(); // Prevent form submission if validation fails
+                amountError.textContent = "Please enter a valid amount.";
+            }
+        });
+    </script>
+{% endblock %}

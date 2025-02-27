@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction History{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="history-container">
+        <div class="history-header">
+            <!-- Back Button -->
+            <button class="back-button" onclick="window.history.back();">
+                <span class="arrow-icon">&larr;</span>
+            </button>
+            <h1 class="center-heading">Transaction History</h1>
+        </div>
+        <div class="transaction-header">
+            <h2>Transactions</h2>
+           
+        </div>
+
+        {% if grouped_transactions %}
+            <!-- Loop through grouped transactions -->
+            {% for date, transactions in grouped_transactions.items() %}
+                <!-- Display the date -->
+                <h3>
+                    {% if date == today_date %}
+                        Today
+                    {% else %}
+                        {{ date }}
+                    {% endif %}
+                </h3>
+
+                <!-- List transactions for the date -->
+                {% for transaction in transactions %}
+                    <div class="transaction-item">
+                        <div class="transaction-arrow up"></div>
+                        <div class="transaction-details">
+                            <h4>{{ transaction.beneficiary_name }}</h4>
+                            <p>{{ transaction.remarks }}</p>
+                        </div>
+                        <div class="transaction-amount">PKR {{ transaction.amount }}</div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% else %}
+            <p>No transactions found.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+

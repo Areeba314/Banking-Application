@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Beneficiary List{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/send-money.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="settings-sidebar">
+            <div class="logo">
+                <h2>MYBANK</h2>
+            </div>
+            <div class="settings-list">
+                <a href="/dashboard" class="setting-item">Home</a>
+                <a href="/beneficiaries" class="setting-item">Transfer Money</a>
+                <a href="/add_beneficiary" class="setting-item">Add Beneficiaries</a>
+            </div>
+            <div class="logout">
+                <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+            </div>
+        </div>
+        <div class="form-container">
+            <h2>Beneficiary List</h2>
+            <ul class="beneficiary-list">
+                {% for beneficiary in beneficiaries %}
+                    <li onclick="location.href='/transfer_money/{{ beneficiary.id }}';">
+                        <span class="beneficiary-name">{{ beneficiary.account_holder_name }}</span>
+                        <span class="arrow">></span>
+                    </li>
+                {% else %}
+                    <p>No beneficiaries added yet.</p>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Onboarding3{% endblock %}
+
+{% block styles %}
+ 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/onboarding.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+   
+    <div class="skip">
+        <a href="{{ url_for('continue_to_login') }}" style="text-decoration: none; color: inherit;">Skip</a>
+      </div>
+    <img src="/static/images/Onboarding3.png" alt="Illustration" class="image" />
+    <div class="title">Bill Payment Made Easy</div>
+    <div class="description">
+     Pay Monthly or daily bills at home through Mybank.
+    </div>
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span class="active"></span>
+    </div>
+  
+    <a href="{{ url_for('continue_to_login') }}" class="continue-btn">Continue</a>
+  </div>
+  {% endblock %}

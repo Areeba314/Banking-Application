@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Beneficary Added{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/success.css') }}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="screen-container">
+        <div class="content-center">
+           
+            <img src="/static/images/Thumbs-up.png" alt="Thumbs Up" class="success-icon">
+            <h2>Beneficiary Added</h2>
+            <script>
+                // Redirect to Add Beneficiary page after 5 seconds
+                setTimeout(function () {
+                    window.location.href = "{{ url_for('beneficiaries') }}";
+                }, 4000);  // 4000 milliseconds = 4 seconds
+            </script>
+            <p>Your beneficiary list has been updated.</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Language Selection{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/language.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+            <!-- Include the sidebar -->
+       {% include "sidebar.html" %}
+
+        <div class="settings-content">
+            <h1>Select Language</h1>
+            <p>Select your preferred language:</p>
+            <ul class="language-list">
+                <li class="language-item selected" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/us.svg" alt="US Flag"> English</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/pk.svg" alt="Pakistan Flag"> Urdu</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/fr.svg" alt="France Flag"> French</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/es.svg" alt="Spain Flag"> Spanish</span>
+                    <span class="check-icon">✔</span>
+                </li>
+                <li class="language-item" onclick="selectLanguage(this)">
+                    <span><img src="https://flagcdn.com/vn.svg" alt="Vietnam Flag"> Vietnamese</span>
+                    <span class="check-icon">✔</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+   <!-- Link to External JavaScript -->
+   <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+   {% endblock %}

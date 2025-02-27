@@ -1,0 +1,62 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add Beneficiary {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/send-money.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="settings-sidebar">
+            <div class="logo">
+                <h2>MYBANK</h2>
+            </div>
+            <div class="settings-list">
+                <a href="/dashboard" class="setting-item">Home</a>
+                <a href="/beneficiaries" class="setting-item">Transfer Money</a>
+                <a href="/add_beneficiary" class="setting-item">Add Beneficiary</a>
+            </div>
+            <div class="logout">
+                <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+            </div>
+        </div>
+
+        <!-- Add Beneficiary Form Section -->
+        <div class="form-container">
+            <h2>Add Beneficiary</h2>
+            <form action="/add_beneficiary" method="POST">
+                <!-- Account Holder Name -->
+                <label for="account_holder_name">Account Holder Name</label>
+                <input type="text" id="account_holder_name" name="account_holder_name" placeholder="Enter account holder's name" required>
+                <!-- Bank Selection -->
+                <label for="bank">Bank</label>
+                <div class="dropdown-input" onclick="openBankSelection()">
+                    <span id="bank-name" class="placeholder">Select a bank</span>
+                    <span class="chevron">&#9662;</span>
+                </div>
+                  <!-- Hidden input to store the selected bank name -->
+                  <input type="hidden" id="bank_name" name="bank_name">
+                <!-- Account Number -->
+                <label for="account_number">Account Number</label>
+                <input type="text" id="account_number" name="account_number" placeholder="Enter account number" required oninput="validateAccountNumber()">
+                <p id="errorMessage" style="color:red;"></p>
+              
+              
+
+                <!-- Submit Button -->
+                <button type="submit">Continue</button>
+            </form>
+        </div>
+    </div>
+
+  <!-- Link to External JavaScript -->
+  <script src="{{ url_for('static', filename='js/add-beneficiary.js') }}"></script>
+  {% endblock %}

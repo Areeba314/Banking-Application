@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Transfer Successful{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/success.css') }}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="screen-container">
+        <div class="content-center">
+           
+            <img src="/static/images/Thumbs-up.png" alt="Thumbs Up" class="success-icon">
+            <h2>Transfer successful</h2>
+            <script>
+                // Redirect to send money page after 5 seconds
+                setTimeout(function () {
+                    window.location.href = "{{ url_for('send_money') }}";
+                }, 4000);  // 4000 milliseconds = 4 seconds
+            </script>
+            <p>Money Transfered Successfully</p>
+        </div>
+    </div>
+{% endblock %}

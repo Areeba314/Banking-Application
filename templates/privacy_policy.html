@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/privacy-policy.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+       <!-- Include the sidebar -->
+       {% include "sidebar.html" %}
+        <div class="settings-content">
+            <h1>Privacy Policy</h1>
+            <p>Thank you for visiting our application and enrolling as a member.</p>
+            <p>Your privacy is important to us. To better protect your privacy, we are providing this notice explaining our policy with regards to the information you share with us.
+            </p>
+        </div>
+    </div>
+    {% endblock %}

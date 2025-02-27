@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <!-- Include the sidebar -->
+    {% include "sidebar.html" %}
+        <div class="settings-content">
+            <h1>Settings</h1>
+            <p>Manage your preferences and account settings.</p>
+        </div>
+    </div>
+    {% endblock %}

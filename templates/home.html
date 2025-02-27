@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% block title %}Onboarding{% endblock %}
+
+{% block styles %}
+  <!-- Link to the login page's specific CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/onboarding.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="skip">
+      <a href="{{ url_for('continue_to_login') }}" style="text-decoration: none; color: inherit;">Skip</a>
+    </div>
+   
+    <img src="/static/images/Onboarding.png" alt="Illustration" class="image" />
+    <div class="title">Easy, Fast & Trusted</div>
+    <div class="description">
+      Fast money transfer and guaranteed safe transactions with others.
+    </div>
+    <div class="dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+    </div>
+  
+    <a href="{{ url_for('continue_to_screen2') }}" class="continue-btn">Continue</a>
+  </div>
+{% endblock %}

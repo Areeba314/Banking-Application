@@ -1,0 +1,18 @@
+<div class="settings-sidebar">
+    <div>
+        <div class="logo">
+            <h2>MYBANK</h2>
+        </div>
+        <div class="settings-list">
+            <a href="/dashboard" class="setting-item">Home</a>
+            <a href="{{ url_for('language') }}" class="setting-item ">Language</a>
+            <a href="{{ url_for('edit_profile') }}" class="setting-item">My Profile</a>
+            <a href="{{ url_for('contact_us') }}" class="setting-item">Contact Us</a>
+            <a href="{{ url_for('change_password') }}"class="setting-item">Change Password</a>
+            <a href="{{ url_for('privacy_policy') }}"class="setting-item">Privacy Policy</a>
+        </div>
+    </div>
+    <div>
+        <a href="/logout" class="logout-button">Logout</a>
+    </div>
+</div>

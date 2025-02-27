@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Onboarding2{% endblock %}
+
+{% block styles %}
+ 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/onboarding.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+   
+    <div class="skip">
+        <a href="{{ url_for('continue_to_login') }}" style="text-decoration: none; color: inherit;">Skip</a>
+      </div>
+      
+   
+    <img src="/static/images/Onboarding2.png" alt="Illustration" class="image" />
+    <div class="title">Free Transactions</div>
+    <div class="description">
+     Provides the quality of the financial system with free money transactions without any fees.
+    </div>
+    <div class="dots">
+      <span></span>
+      <span class="active"></span>
+      <span></span>
+    </div>
+  
+    <a href="{{ url_for('continue_to_screen3') }}" class="continue-btn">Continue</a>
+  </div>
+  {% endblock %}

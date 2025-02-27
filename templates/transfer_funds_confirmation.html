@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Payment{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/transfer-funds.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="screen-container">
+        <div class="content-box">
+            <div class="payment-header">
+                <!-- Back Button -->
+                <button class="back-button" onclick="window.history.back();">
+                    <span class="arrow-icon">&larr;</span>
+                </button>
+                <h1 class="center-heading">Confirm Payment</h1>
+            </div>
+          
+           <div class="payment-details">
+            <!-- Payment Details -->
+            <p><strong>Beneficiary:</strong> {{ beneficiary.account_holder_name }}</p>
+            <p><strong>Bank:</strong> {{ beneficiary.bank_name }}</p>
+            <p><strong>Account Number:</strong> {{ beneficiary.account_number }}</p>
+            <p><strong>Amount:</strong> PKR {{ transfer_details.amount }}</p>
+            <p><strong>Remarks:</strong> {{ transfer_details.note | trim | default('none') }}</p>
+           </div>
+
+            <!-- Confirmation Form -->
+            <form method="POST" action="{{ url_for('transfer_confirmation', beneficiary_id=beneficiary.id) }}">
+                <button type="submit" class="action-button">Confirm Payment</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

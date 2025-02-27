@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Select Bank{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/send-money.css') }}">
+{% endblock %}
+
+{% block content %}
+     
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="settings-sidebar">
+            <div class="logo">
+                <h2>MYBANK</h2>
+            </div>
+            <div class="settings-list">
+                <a href="/dashboard" class="setting-item">Home</a>
+                <a href="/beneficiaries" class="setting-item">Transfer Money</a>
+                <a href="/add_beneficiary" class="setting-item">Add Beneficiary</a>
+            </div>
+            <div class="logout">
+                <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-container">
+           
+                <h2>Select a Bank</h2>
+                <ul class="bank-list">
+                    <li onclick="selectBank('Meezan')">Meezan</li>
+                    <li onclick="selectBank('Alfalah')">Alfalah</li>
+                    <li onclick="selectBank('HBL')">HBL</li>
+                    <li onclick="selectBank('MCB')">MCB</li>
+                    <li onclick="selectBank('EasyPaisa')">EasyPaisa</li>
+                    <li onclick="selectBank('JazzCash')">JazzCash</li>
+                </ul>
+          
+    </div>
+
+    <script>
+        /**
+         * Handles bank selection, stores the selected bank in localStorage,
+         * and redirects back to the Add Beneficiary page.
+         *
+         * @param {string} bankName - The name of the selected bank.
+         */
+        function selectBank(bankName) {
+            // Save the selected bank to localStorage
+            localStorage.setItem('selectedBank', bankName);
+
+            // Redirect to the Add Beneficiary page
+            window.location.href = '/add_beneficiary';
+        }
+    </script>
+    {% endblock %}

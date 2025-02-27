@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block styles %}
+ 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard">
+        <!-- User Info -->
+        <div class="user-info">
+            <img src="/static/images/dp.png" alt="User Avatar" class="avatar">
+            <h2>Welcome Back,<br><span>{{ user.name }}</span></h2>
+            <button class="notification-btn">
+                <img src="/static/images/notifications.png" alt="Notifications">
+            </button>
+        </div>
+
+        <!-- Card Section -->
+        <div class="card">
+            <div class="card-details">
+                <h3>{{ user.card_number }}</h3>
+                <p>{{ user.name }}</p>
+                <p>Expiry Date: {{ user.expiry_date }}</p>
+            </div>
+            <div class="card-logo">
+                <span class="star">★</span>
+                
+            </div>
+        </div>
+
+        <!-- Menu Section -->
+        <div class="menu">
+            <a href="/send-money" class="menu-item">
+                <button>
+                    <img src="/static/images/send-money.png" alt="Send Money">
+                    <p>Send Money</p>
+                </button>
+            </a>
+            <a href="/my-bills" class="menu-item">
+                <button>
+                    <img src="/static/images/my-bills.png" alt="My Bills">
+                    <p>My Bills</p>
+                </button>
+            </a>
+            <a href="/my-balance" class="menu-item">
+                <button>
+                    <img src="/static/images/my-balance.png" alt="My Balance">
+                    <p>My Balance</p>
+                </button>
+            </a>
+            <a href="/my-cards" class="menu-item">
+                <button>
+                    <img src="/static/images/my-cards.png" alt="My Cards">
+                    <p>My Cards</p>
+                </button>
+            </a>
+            <a href="{{ url_for('transaction_history') }}" class="menu-item">
+                <button>
+                    <img src="/static/images/history.png" alt="History">
+                    <p>History</p>
+                </button>
+            </a>
+            
+            <div class="settings">
+            <a href="{{ url_for('settings') }}" class="menu-item">
+                <button>
+                    <img src="/static/images/settings.png" alt="Settings">
+                    <p>Settings</p>
+                </button>
+            </a>
+        </div>
+        </div>
+
+        <!-- Logout Section -->
+        <div class="logout">
+            <a href="/logout" style="text-decoration: none; display: flex; align-items: center; color: inherit;">
+                <img src="/static/images/logout.png" alt="Logout">
+                <p>Log Out</p>
+            </a>
+        </div>
+    </div>
+
+   {% endblock %}
+
